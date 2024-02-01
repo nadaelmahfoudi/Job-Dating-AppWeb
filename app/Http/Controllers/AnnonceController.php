@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+
+use App\Http\Requests\AnnonceRequest;
 use App\Models\Annonce;
 use App\Models\Entreprise;
 use Illuminate\Http\Request;
@@ -33,17 +35,10 @@ class AnnonceController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(AnnonceRequest $request)
     {
-        
-        $request->validate([
-            'titre'=>'required|min:5|max:255',
-            'contenu'=>'required|string',
-            'entreprise_id'=>'required|string',
-    
-        ]);
-        
-        Annonce::create($request->all());
+      
+        Annonce::create($request->validated());
          
         return redirect()->route('annonces.index')
                         ->with('success','Company created successfully.');
@@ -70,16 +65,11 @@ class AnnonceController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Annonce $annonce)
+    public function update(AnnonceRequest $request, Annonce $annonce)
     {
+
         
-        $request->validate([
-            'titre' => 'required|min:5|max:255',
-            'contenu' => 'required|string',
-            'entreprise_id' => 'required|string',
-        ]);
-        
-        $annonce->update($request->all());
+        $annonce->update($request->validated());
         
         return redirect()->route('annonces.index')
                         ->with('success','Company updated successfully');

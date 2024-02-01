@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\EntrepriseRequest;
 use App\Models\Entreprise;
 use Illuminate\Http\Request;
 
@@ -31,17 +32,11 @@ class EntrepriseController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(EntrepriseRequest $request)
     {
+
         
-        $request->validate([
-            'name'=>'required|min:10|max:255',
-            'location'=>'required|string',
-            'details'=>'required|string',
-    
-        ]);
-        
-        Entreprise::create($request->all());
+        Entreprise::create($request->validated());
          
         return redirect()->route('dashboard')
                         ->with('success','Company created successfully.');
@@ -67,17 +62,10 @@ class EntrepriseController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Entreprise $entreprise)
+    public function update(EntrepriseRequest $request, Entreprise $entreprise)
     {
-        
-        $request->validate([
-            'name'=>'required|min:10|max:255',
-            'location'=>'required|string',
-            'details'=>'required|string',
-    
-        ]);
-        
-        $entreprise->update($request->all());
+       
+        $entreprise->update($request->validated());
         
         return redirect()->route('dashboard')
                         ->with('success','Company updated successfully');

@@ -131,7 +131,7 @@
     <thead>
         <tr>
         <div class="pull-right">
-                <a class="btn btn-success bg-green-600" href="{{ route('entreprises.create') }}"> Create New annonce</a>
+                <a class="btn btn-success bg-green-600" href="{{ route('entreprises.create') }}"> Create New entreprise</a>
             </div>
             <th class="py-2 px-4 border-b">No</th>
             <th class="py-2 px-4 border-b">Name</th>
