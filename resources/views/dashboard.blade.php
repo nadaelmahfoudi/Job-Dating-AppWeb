@@ -15,10 +15,14 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 <!-- Start block -->
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+    
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
+            
+        <h1 class="font-semibold text-xl text-gray-800 px-7">ENTREPRISES</h1>
             <div class="flex flex-col md:flex-row items-center justify-between space-y-3 md:space-y-0 md:space-x-4 p-4">
+                
                 <div class="w-full md:w-1/2">
                     <form class="flex items-center">
                         <label for="simple-search" class="sr-only">Search</label>
@@ -122,11 +126,12 @@
                 </div>
             </div>
             <div class="overflow-x-auto">
+                
             <table class="min-w-full bg-white border border-gray-300">
     <thead>
         <tr>
         <div class="pull-right">
-                <a class="btn btn-success bg-green-800" href="{{ route('entreprises.create') }}"> Create New book</a>
+                <a class="btn btn-success bg-green-600" href="{{ route('entreprises.create') }}"> Create New annonce</a>
             </div>
             <th class="py-2 px-4 border-b">No</th>
             <th class="py-2 px-4 border-b">Name</th>

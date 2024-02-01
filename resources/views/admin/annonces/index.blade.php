@@ -126,7 +126,7 @@
     <thead>
         <tr>
         <div class="pull-right">
-                <a class="btn btn-success bg-green-800" href="{{ route('annonces.create') }}"> Create New annonce</a>
+                <a class="btn btn-success bg-green-600" href="{{ route('annonces.create') }}"> Create New annonce</a>
             </div>
             <th class="py-2 px-4 border-b">No</th>
             <th class="py-2 px-4 border-b">Titre</th>
