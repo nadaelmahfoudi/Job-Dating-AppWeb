@@ -2,8 +2,12 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
+            <div class="pull-right">
+                <a class="btn btn-success " href="{{ route('annonces.index') }}"> Annonces</a>
+            </div>
         </h2>
     </x-slot>
+
 
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
@@ -121,6 +125,9 @@
             <table class="min-w-full bg-white border border-gray-300">
     <thead>
         <tr>
+        <div class="pull-right">
+                <a class="btn btn-success bg-green-800" href="{{ route('entreprises.create') }}"> Create New book</a>
+            </div>
             <th class="py-2 px-4 border-b">No</th>
             <th class="py-2 px-4 border-b">Name</th>
             <th class="py-2 px-4 border-b">Location</th>
@@ -140,11 +147,11 @@
             <td class="py-2 px-4 border-b">{{ $entreprise->details }}</td>
             <td class="py-2 px-4 border-b">
                 <form action="{{ route('entreprises.destroy', $entreprise->id) }}" method="POST" class="flex">
-                    <a class="btn btn-info mr-2" href="{{ route('entreprises.show', $entreprise->id) }}">Show</a>
-                    <a class="btn btn-primary mr-2" href="{{ route('entreprises.edit', $entreprise->id) }}">Edit</a>
+                    <a class="btn btn-info mr-2 bg-orange-400" href="{{ route('entreprises.show', $entreprise->id) }}">Show</a>
+                    <a class="btn btn-primary mr-2 bg-blue-700" href="{{ route('entreprises.edit', $entreprise->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger">Delete</button>
+                    <button type="submit" class="btn btn-danger bg-red-700">Delete</button>
                 </form>
             </td>
         </tr>

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EntrepriseController;
 use Illuminate\Support\Facades\Route;
@@ -31,4 +32,5 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 Route::resource('entreprises', EntrepriseController::class);
+Route::resource('annonces', AnnonceController::class);
 Route::get('/dashboard', [EntrepriseController::class, 'showDashboard'])->name('dashboard');

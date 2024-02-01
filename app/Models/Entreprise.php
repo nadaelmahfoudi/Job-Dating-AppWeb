@@ -12,4 +12,9 @@ class Entreprise extends Model
     protected $fillable=[
         "name","location","details",
     ];
+
+    public function annonces()
+    {
+        return $this->hasMany(Annonce::class);
+    }
 }

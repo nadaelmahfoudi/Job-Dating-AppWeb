@@ -13,7 +13,7 @@
     <div class="container mx-auto mt-8">
         <div class="flex justify-between items-center mb-8">
             <h2 class="text-2xl font-bold">Add New Entreprise</h2>
-            <a class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700" href="{{ route('entreprises.index') }}">Back</a>
+            <a class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700" href="{{ route('dashboard') }}">Back</a>
         </div>
 
         @if ($errors->any())
