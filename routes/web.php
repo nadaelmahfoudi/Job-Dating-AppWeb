@@ -34,3 +34,4 @@ require __DIR__.'/auth.php';
 Route::resource('entreprises', EntrepriseController::class);
 Route::resource('annonces', AnnonceController::class);
 Route::get('/dashboard', [EntrepriseController::class, 'showDashboard'])->name('dashboard');
+Route::get('', [AnnonceController::class, 'showWelcome'])->name('welcome');

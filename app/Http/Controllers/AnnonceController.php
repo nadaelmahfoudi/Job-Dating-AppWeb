@@ -99,8 +99,14 @@ class AnnonceController extends Controller
 
     public function showDashboard()
     {
-        $annonces = Annonce::all(); // Replace with your actual query to retrieve entreprises
+        $annonces = Annonce::all(); 
         return view('annonces.index', compact('annonces'));
+    }
+
+    public function showWelcome()
+    {
+        $annonces = Annonce::all(); 
+        return view('welcome', compact('annonces'));
     }
 
 }
