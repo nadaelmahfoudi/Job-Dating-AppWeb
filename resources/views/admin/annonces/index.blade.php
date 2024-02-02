@@ -1,3 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @vite(['resources/css/app.css'])
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
@@ -127,7 +139,10 @@
     <thead>
         <tr>
         <div class="pull-right">
-                <a class="btn btn-success bg-green-600" href="{{ route('annonces.create') }}"> Create New annonce</a>
+        <a class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded " href="{{ route('annonces.create') }}">
+                Create New annonce
+            </a>
+
             </div>
             <th class="py-2 px-4 border-b">No</th>
             <th class="py-2 px-4 border-b">Titre</th>

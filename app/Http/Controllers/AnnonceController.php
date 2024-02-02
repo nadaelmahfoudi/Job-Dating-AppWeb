@@ -95,7 +95,7 @@ class AnnonceController extends Controller
 
     public function showWelcome()
     {
-        $annonces = Annonce::all(); 
+        $annonces = Annonce::latest()->paginate(5); 
         return view('welcome', compact('annonces'));
     }
 
