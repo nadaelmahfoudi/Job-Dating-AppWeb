@@ -131,7 +131,7 @@
     <thead>
         <tr>
         <div class="pull-right">
-                <a class="btn btn-success bg-green-600" href="{{ route('entreprises.create') }}"> Create New entreprise</a>
+                <a class="btn btn-success bg-green-600 py-2 px-4 rounded " href="{{ route('entreprises.create') }}"> Create New entreprise</a>
             </div>
             <th class="py-2 px-4 border-b">No</th>
             <th class="py-2 px-4 border-b">Name</th>
@@ -152,11 +152,11 @@
             <td class="py-2 px-4 border-b">{{ $entreprise->details }}</td>
             <td class="py-2 px-4 border-b">
                 <form action="{{ route('entreprises.destroy', $entreprise->id) }}" method="POST" class="flex">
-                    <a class="btn btn-info mr-2 bg-orange-400" href="{{ route('entreprises.show', $entreprise->id) }}">Show</a>
-                    <a class="btn btn-primary mr-2 bg-blue-700" href="{{ route('entreprises.edit', $entreprise->id) }}">Edit</a>
+                    <a class="btn btn-info mr-2 bg-orange-400 py-2 px-4 rounded " href="{{ route('entreprises.show', $entreprise->id) }}">Show</a>
+                    <a class="btn btn-primary mr-2 bg-blue-700 py-2 px-4 rounded " href="{{ route('entreprises.edit', $entreprise->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger bg-red-700">Delete</button>
+                    <button type="submit" class="btn btn-danger bg-red-700 py-2 px-4 rounded ">Delete</button>
                 </form>
             </td>
         </tr>

@@ -163,11 +163,11 @@
             <td class="py-2 px-4 border-b">{{ $annonce->entreprise->name }}</td>
             <td class="py-2 px-4 border-b">
                 <form action="{{ route('annonces.destroy', $annonce->id) }}" method="POST" class="flex">
-                    <a class="btn btn-info mr-2 bg-orange-400" href="{{ route('annonces.show', $annonce->id) }}">Show</a>
-                    <a class="btn btn-primary mr-2 bg-blue-700" href="{{ route('annonces.edit', $annonce->id) }}">Edit</a>
+                    <a class="btn btn-info mr-2 bg-orange-400 py-2 px-4 rounded " href="{{ route('annonces.show', $annonce->id) }}">Show</a>
+                    <a class="btn btn-primary mr-2 bg-blue-700 py-2 px-4 rounded " href="{{ route('annonces.edit', $annonce->id) }}">Edit</a>
                     @csrf
                     @method('DELETE')
-                    <button type="submit" class="btn btn-danger bg-red-700">Delete</button>
+                    <button type="submit" class="btn btn-danger bg-red-700 py-2 px-4 rounded ">Delete</button>
                 </form>
             </td>
         </tr>
