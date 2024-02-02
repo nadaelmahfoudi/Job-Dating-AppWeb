@@ -85,7 +85,7 @@ class EntrepriseController extends Controller
 
     public function showDashboard()
     {
-        $entreprises = Entreprise::all(); // Replace with your actual query to retrieve entreprises
+        $entreprises = Entreprise::all(); 
         return view('dashboard', compact('entreprises'));
     }
 
