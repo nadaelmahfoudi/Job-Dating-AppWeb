@@ -27,6 +27,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 <!-- Start block -->
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -156,22 +157,29 @@
             $i = 0;
         @endphp
         @foreach ($annonces as $annonce)
-        <tr>
-            <td class="py-2 px-4 border-b">{{ ++$i }}</td>
-            <td class="py-2 px-4 border-b">{{ $annonce->titre }}</td>
-            <td class="py-2 px-4 border-b">{{ $annonce->contenu }}</td>
-            <td class="py-2 px-4 border-b">{{ $annonce->entreprise->name }}</td>
-            <td class="py-2 px-4 border-b">
-                <form action="{{ route('annonces.destroy', $annonce->id) }}" method="POST" class="flex">
-                    <a class="btn btn-info mr-2 bg-orange-400 py-2 px-4 rounded " href="{{ route('annonces.show', $annonce->id) }}">Show</a>
-                    <a class="btn btn-primary mr-2 bg-blue-700 py-2 px-4 rounded " href="{{ route('annonces.edit', $annonce->id) }}">Edit</a>
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="btn btn-danger bg-red-700 py-2 px-4 rounded ">Delete</button>
-                </form>
-            </td>
-        </tr>
-        @endforeach
+    <tr>
+        <td class="py-2 px-4 border-b">{{ ++$i }}</td>
+        <td class="py-2 px-4 border-b">{{ $annonce->titre }}</td>
+        <td class="py-2 px-4 border-b">{{ $annonce->contenu }}</td>
+        <td class="py-2 px-4 border-b">
+            @if ($annonce->entreprise)
+                {{ $annonce->entreprise->name }}
+            @else
+                <span class="text-red-500">No entreprise associated</span>
+            @endif
+        </td>
+        <td class="py-2 px-4 border-b">
+            <form action="{{ route('annonces.destroy', $annonce->id) }}" method="POST" class="flex">
+                <a class="btn btn-info mr-2 bg-orange-400 py-2 px-4 rounded" href="{{ route('annonces.show', $annonce->id) }}">Show</a>
+                <a class="btn btn-primary mr-2 bg-blue-700 py-2 px-4 rounded" href="{{ route('annonces.edit', $annonce->id) }}">Edit</a>
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger bg-red-700 py-2 px-4 rounded">Delete</button>
+            </form>
+        </td>
+    </tr>
+@endforeach
+
     </tbody>
 </table>
 

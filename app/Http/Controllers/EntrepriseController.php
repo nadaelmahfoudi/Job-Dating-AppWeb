@@ -20,6 +20,22 @@ class EntrepriseController extends Controller
        
     }
 
+    public function archive()
+    {
+        $entreprises = Entreprise::onlyTrashed()->get();
+        
+        return view('dashboard',compact('entreprises'));
+       
+    }
+
+    public function all()
+    {
+        $entreprises = Entreprise::withTrashed()->get();
+        
+        return view('dashboard',compact('entreprises'));
+       
+    }
+
     /**
      * Show the form for creating a new resource.
      */

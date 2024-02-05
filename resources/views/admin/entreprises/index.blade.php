@@ -25,6 +25,9 @@
             <th>Details</th>
             <th width="280px">Action</th>
         </tr>
+        @php
+            $i = 0;
+        @endphp
         @foreach ($entreprises as $entreprise)
         <tr>
             <td>{{ ++$i }}</td>
@@ -48,7 +51,6 @@
         @endforeach
     </table>
   
-    {!! $entreprises->links() !!}
       
 <div class="row">
     <div class="col-lg-12 margin-tb">

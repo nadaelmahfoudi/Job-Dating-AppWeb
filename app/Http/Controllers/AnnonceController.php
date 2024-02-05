@@ -83,7 +83,7 @@ class AnnonceController extends Controller
       
         $annonce->delete();
          
-        return redirect()->route('dashboard')
+        return redirect()->route('annonces.index')
                         ->with('success','Company deleted successfully');
     }
 
@@ -98,5 +98,7 @@ class AnnonceController extends Controller
         $annonces = Annonce::latest()->paginate(5); 
         return view('welcome', compact('annonces'));
     }
+
+    
 
 }

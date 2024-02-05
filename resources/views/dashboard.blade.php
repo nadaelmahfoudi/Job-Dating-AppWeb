@@ -15,7 +15,14 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 <!-- Start block -->
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
-    
+    <nav class="nav nav-tabs nav-stacked my-5">
+        <a class="nav-link" href="{{ route('dashboard') }}">List entreprises</a>
+        <a class="nav-link" href="{{ route('entreprises.archive') }}">Archive entreprises</a>
+        <a class="nav-link" href="{{ route('entreprises.all') }}">All entreprises</a> 
+    </nav>
+    <div class="my-5 mx-3" >
+        <h4>{{$entreprises->count() }} entreprises</h4>
+    </div>
     <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
         <!-- Start coding here -->
         <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
@@ -141,12 +148,10 @@
         </tr>
     </thead>
     <tbody>
-        @php
-            $i = 0;
-        @endphp
+
         @foreach ($entreprises as $entreprise)
         <tr>
-            <td class="py-2 px-4 border-b">{{ ++$i }}</td>
+            <td class="py-2 px-4 border-b">{{$loop->iteration}}</td>
             <td class="py-2 px-4 border-b">{{ $entreprise->name }}</td>
             <td class="py-2 px-4 border-b">{{ $entreprise->location }}</td>
             <td class="py-2 px-4 border-b">{{ $entreprise->details }}</td>
