@@ -52,6 +52,22 @@
                     @endforeach
                 </select>
             </div>
+            <div class="mb-3">
+            <label for="entreprise_id" class="block text-gray-700 text-sm font-bold mb-2">Select Skills:</label>
+                <select class="form-select" id="update-skills" name="skills[]" multiple>
+                    @foreach ($skills as $skill)
+                    <option value="{{ $skill->id }}" {{ $annonce->skills->contains($skill->id) ? 'selected' : '' }}>
+                        {{ $skill->name }}
+                    </option>
+                    @endforeach
+                </select>
+
+                <script>
+                    new TomSelect("#update-skills",{
+                    });
+                </script>
+            </div>
+
 
             <div class="text-center">
                 <button type="submit" class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline">Submit</button>

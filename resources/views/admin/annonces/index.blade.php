@@ -17,6 +17,7 @@
             <div class="pull-right">
                 <a class="btn btn-success " href="{{ route('dashboard') }}"> Entreprises</a>
             </div>
+            <a class="btn btn-success " href="{{ route('skills.index') }}"> skills</a>
         </h2>
     </x-slot>
 
@@ -149,6 +150,7 @@
             <th class="py-2 px-4 border-b">Titre</th>
             <th class="py-2 px-4 border-b">Contenu</th>
             <th class="py-2 px-4 border-b">Nom d'Entreprise</th>
+            <th class="py-2 px-4 border-b">Skills</th>
             <th class="py-2 px-4 border-b" width="280px">Action</th>
         </tr>
     </thead>
@@ -167,6 +169,16 @@
             @else
                 <span class="text-red-500">No entreprise associated</span>
             @endif
+        </td>
+        <td class="py-2 px-4 border-b">
+            <div class="mb-3">
+                <label class="form-label">Skills:</label>
+                <div>
+                    @foreach ($annonce->skills as $skill)
+                        <span class="badge bg-blue-500 text-white">{{ $skill->name }}</span>
+                    @endforeach
+                </div>
+            </div>
         </td>
         <td class="py-2 px-4 border-b">
             <form action="{{ route('annonces.destroy', $annonce->id) }}" method="POST" class="flex">

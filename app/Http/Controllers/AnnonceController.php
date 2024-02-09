@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnnonceRequest;
 use App\Models\Annonce;
 use App\Models\Entreprise;
+use App\Models\Skill;
 use Illuminate\Http\Request;
 
 class AnnonceController extends Controller
@@ -15,6 +16,7 @@ class AnnonceController extends Controller
     public function index()
     {
         $annonces = Annonce::latest()->paginate(5);
+        $skills = Skill::all();
         
         return view('admin.annonces.index',compact('annonces'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
@@ -26,23 +28,25 @@ class AnnonceController extends Controller
      */
     public function create()
     {
-  
-        $entreprises = Entreprise::all(); 
-
-        return view('admin.annonces.create', compact('entreprises'));
+        $entreprises = Entreprise::all();
+        $skills = Skill::all(); // Fetch all skills
+        
+        return view('admin.annonces.create', compact('entreprises', 'skills'));
     }
+    
+    
 
     /**
      * Store a newly created resource in storage.
      */
     public function store(AnnonceRequest $request)
     {
-      
-        Annonce::create($request->validated());
-         
+        $annonce = Annonce::create($request->validated());
+        $annonce->skills()->sync($request->input('skills', []));
+
+    
         return redirect()->route('annonces.index')
-                        ->with('success','Company created successfully.');
-;
+                        ->with('success', 'Company created successfully.');
     }
 
     /**
@@ -56,11 +60,22 @@ class AnnonceController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Annonce $annonce)
+    public function edit($id)
     {
+        // Récupérer l'annonce spécifique par son identifiant
+        $annonce = Annonce::findOrFail($id); 
+    
+        // Récupérer toutes les entreprises
         $entreprises = Entreprise::all(); 
-        return view('admin.annonces.edit', compact('annonce', 'entreprises'));
+    
+        // Récupérer toutes les compétences disponibles
+        $skills = Skill::all();
+    
+        // Retourner la vue d'édition avec l'annonce, les entreprises et les compétences
+        return view('admin.annonces.edit', compact('annonce', 'entreprises', 'skills'));
     }
+    
+    
 
     /**
      * Update the specified resource in storage.
@@ -70,7 +85,7 @@ class AnnonceController extends Controller
 
         
         $annonce->update($request->validated());
-        
+        $annonce->skills()->sync($request->input('skills', []));
         return redirect()->route('annonces.index')
                         ->with('success','Company updated successfully');
     }
@@ -98,7 +113,4 @@ class AnnonceController extends Controller
         $annonces = Annonce::latest()->paginate(5); 
         return view('welcome', compact('annonces'));
     }
-
-    
-
 }

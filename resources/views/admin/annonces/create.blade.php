@@ -41,14 +41,22 @@
             </div>
 
             <div class="mb-3">
-                        <label for="entreprise_id" class="form-label">entreprise_id:</label>
-                        <select name="entreprise_id" class="form-select">
-                            <option value=""></option>
-                            @foreach($entreprises as $entreprise)
-                                <option value="{{ $entreprise->id }}">{{ $entreprise->name }}</option>
-                            @endforeach
-                        </select>
-                    </div>
+                <label for="entreprise_id" class="form-label">entreprise_id:</label>
+                <select name="entreprise_id" class="form-select">
+                    <option value=""></option>
+                    @foreach($entreprises as $entreprise)
+                        <option value="{{ $entreprise->id }}">{{ $entreprise->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="mb-3">
+                <label for="entreprise_id" class="block text-gray-700 text-sm font-bold mb-2">Select Skills:</label>
+                <select class="form-select" id="update-skills" name="skills[]" multiple>
+                    @foreach ($skills as $skill)
+                    <option value="{{ $skill->id }}">{{ $skill->name }}</option>
+                    @endforeach
+                </select>
+            </div>
 
             <div class="text-center">
                 <button type="submit" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-700 focus:outline-none focus:shadow-outline">Submit</button>

@@ -18,6 +18,6 @@ class Annonce extends Model
 
     public function skills()
     {
-        return $this->belongsToMany(Skill::class, 'skills', 'user_id', 'annonce_id')->withPivot('name'); 
+        return $this->belongsToMany(Skill::class, 'skill_annonce');
     }
 }
