@@ -50,7 +50,7 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'view_job_suggestions']);
         Permission::create(['name' => 'Edit_profile']);
 
-        
+
         $adminRole->givePermissionTo('manage_users');
         $apprenantRole->givePermissionTo('Register','Aplly_to_job','view_job_suggestions','Edit_profile');
     }

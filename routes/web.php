@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EntrepriseController;
+use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -31,9 +32,15 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+
 Route::resource('entreprises', EntrepriseController::class);
 Route::resource('annonces', AnnonceController::class);
+Route::resource('skills', SkillController::class);
 Route::get('/dashboard', [EntrepriseController::class, 'showDashboard'])->name('dashboard');
 Route::get('', [AnnonceController::class, 'showWelcome'])->name('welcome');
 Route::get('/archive',[EntrepriseController::class,'archive'])->name('entreprises.archive');
 Route::get('/all',[EntrepriseController::class,'all'])->name('entreprises.all');
+Route::group(['middleware' => ['auth']], function() {
+Route::resource('roles','RoleController');
+Route::resource('users','UserController');
+});

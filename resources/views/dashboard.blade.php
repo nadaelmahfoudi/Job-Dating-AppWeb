@@ -4,6 +4,7 @@
             {{ __('Dashboard') }}
             <div class="pull-right">
                 <a class="btn btn-success " href="{{ route('annonces.index') }}"> Annonces</a>
+                <a class="btn btn-success " href="{{ route('skills.index') }}"> skills</a>
             </div>
         </h2>
     </x-slot>

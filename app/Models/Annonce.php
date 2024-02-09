@@ -15,4 +15,9 @@ class Annonce extends Model
     {
         return $this->belongsTo(Entreprise::class);
     }
+
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'skills', 'user_id', 'annonce_id')->withPivot('name'); 
+    }
 }
