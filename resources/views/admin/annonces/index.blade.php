@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @vite(['resources/css/app.css'])
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 <body>
@@ -15,13 +16,17 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
             <div class="pull-right">
-                <a class="btn btn-success " href="{{ route('dashboard') }}"> Entreprises</a>
+                <a class="btn  " href="{{ route('dashboard') }}"> Entreprises</a>
             </div>
-            <a class="btn btn-success " href="{{ route('skills.index') }}"> skills</a>
+            <a class="btn  " href="{{ route('skills.index') }}"> skills</a>
         </h2>
     </x-slot>
 
-
+    @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+            @endif
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -137,6 +142,7 @@
                 </div>
             </div>
             <div class="overflow-x-auto">
+
             <table class="min-w-full bg-white border border-gray-300">
     <thead>
         <tr>
@@ -180,6 +186,7 @@
                 </div>
             </div>
         </td>
+
         <td class="py-2 px-4 border-b">
             <form action="{{ route('annonces.destroy', $annonce->id) }}" method="POST" class="flex">
                 <a class="btn btn-info mr-2 bg-orange-400 py-2 px-4 rounded" href="{{ route('annonces.show', $annonce->id) }}">Show</a>

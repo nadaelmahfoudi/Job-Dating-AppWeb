@@ -20,4 +20,9 @@ class Annonce extends Model
     {
         return $this->belongsToMany(Skill::class, 'skill_annonce');
     }
+
+    public function jobDatingApplications()
+    {
+        return $this->hasMany(JobDatingApplication::class);
+    }
 }

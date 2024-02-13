@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\AnnonceRequest;
 use App\Models\Annonce;
 use App\Models\Entreprise;
+use App\Models\JobDatingApplication;
 use App\Models\Skill;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,7 @@ class AnnonceController extends Controller
     {
         $annonces = Annonce::latest()->paginate(5);
         $skills = Skill::all();
-        
+
         return view('admin.annonces.index',compact('annonces'))
                     ->with('i', (request()->input('page', 1) - 1) * 5);
        

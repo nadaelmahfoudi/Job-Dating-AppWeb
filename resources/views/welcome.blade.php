@@ -9,6 +9,7 @@
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,600&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 
         <!-- Styles -->
         <style>
@@ -35,11 +36,22 @@
                 <div class="flex justify-center ">
                     <h1 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">YouTalent</h1>
                 </div>
+                @if ($message = Session::get('success'))
+                    <div class="alert alert-success">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+                @if ($message = Session::get('error'))
+                    <div class="alert alert-danger">
+                        <p>{{ $message }}</p>
+                    </div>
+                @endif
+
 
                 <div class="mt-16">
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
                   
-                    @foreach ($annonces as $annonce)
+@foreach ($annonces as $annonce)
     <a href="https://laravel.com/docs" class="scale-100 p-6 bg-white dark:bg-gray-800/50 dark:bg-gradient-to-bl from-gray-700/50 via-transparent dark:ring-1 dark:ring-inset dark:ring-white/5 rounded-lg shadow-2xl shadow-gray-500/20 dark:shadow-none flex motion-safe:hover:scale-[1.01] transition-all duration-250 focus:outline focus:outline-2 focus:outline-red-500">
 
         <div>
@@ -60,13 +72,18 @@
                 <p class="text-gray-500 dark:text-gray-400">No entreprise associated</p>
             @endif
 
+            {{-- Formulaire pour postuler --}}
+            <form method="POST" action="{{ route('jobdating.apply', $annonce->id) }}" enctype="multipart/form-data">
+                @csrf
+                <input type="submit" value="Apply Now" class="mt-4 px-4 py-2 bg-blue rounded-md">
+
+            </form>
+
         </div>
 
     </a>
 @endforeach
-              
-
-                       
+  
                        
 
             </div>

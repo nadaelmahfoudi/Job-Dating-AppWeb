@@ -3,6 +3,7 @@
 use App\Http\Controllers\AnnonceController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EntrepriseController;
+use App\Http\Controllers\JobDatingApplicationController;
 use App\Http\Controllers\SkillController;
 use Illuminate\Support\Facades\Route;
 
@@ -40,6 +41,7 @@ Route::get('/dashboard', [EntrepriseController::class, 'showDashboard'])->name('
 Route::get('', [AnnonceController::class, 'showWelcome'])->name('welcome');
 Route::get('/archive',[EntrepriseController::class,'archive'])->name('entreprises.archive');
 Route::get('/all',[EntrepriseController::class,'all'])->name('entreprises.all');
+Route::post('/jobdating/offers/{offer}/apply', [JobDatingApplicationController::class, 'apply'])->name('jobdating.apply');
 Route::group(['middleware' => ['auth']], function() {
 Route::resource('roles','RoleController');
 Route::resource('users','UserController');

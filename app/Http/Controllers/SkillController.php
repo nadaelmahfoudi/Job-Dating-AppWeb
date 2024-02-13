@@ -34,10 +34,13 @@ class SkillController extends Controller
     public function store(Request $request)
     {
 
-        foreach ($request->inputs as $key => $value) {
-            Skill::create($value);
-    }
-    return back()->with('success', 'Skills saved successfully');
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+        ]);
+    
+        Skill::create($validatedData);
+    
+        return redirect()->route('skills.index')->with('success', 'Skill added successfully');
 
 }
 
