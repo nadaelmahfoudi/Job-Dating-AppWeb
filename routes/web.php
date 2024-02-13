@@ -5,6 +5,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\EntrepriseController;
 use App\Http\Controllers\JobDatingApplicationController;
 use App\Http\Controllers\SkillController;
+use App\Http\Controllers\StatisticController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,6 +36,7 @@ Route::middleware('auth')->group(function () {
 require __DIR__.'/auth.php';
 
 Route::resource('entreprises', EntrepriseController::class);
+Route::resource('statistics', StatisticController::class)->only(['index']);
 Route::resource('annonces', AnnonceController::class);
 Route::resource('skills', SkillController::class);
 Route::get('/dashboard', [EntrepriseController::class, 'showDashboard'])->name('dashboard');

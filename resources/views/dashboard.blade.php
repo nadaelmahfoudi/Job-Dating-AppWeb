@@ -1,11 +1,12 @@
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+    <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
             <div class="pull-right">
-                <a class="btn btn-success " href="{{ route('annonces.index') }}"> Annonces</a>
-                <a class="btn btn-success " href="{{ route('skills.index') }}"> skills</a>
+                <a class="btn  " href="{{ route('annonces.index') }}"> Annonces</a>
             </div>
+            <a class="btn  " href="{{ route('skills.index') }}"> Skills</a>
+            <a class="btn  " href="{{ route('statistics.index') }}"> Statistics</a>
         </h2>
     </x-slot>
 
