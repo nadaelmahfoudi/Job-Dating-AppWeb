@@ -19,9 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('welcome');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -40,12 +41,12 @@ Route::resource('statistics', StatisticController::class)->only(['index']);
 Route::resource('annonces', AnnonceController::class);
 Route::resource('skills', SkillController::class);
 Route::get('/dashboard', [EntrepriseController::class, 'showDashboard'])->name('dashboard');
-Route::get('', [ProfileController::class, 'showJobDatingSuggestions'])->name('profile.job_dating_suggestions');
+Route::get('/', [ProfileController::class, 'showJobDatingSuggestions'])->name('profile.job_dating_suggestions');
 //  Route::get('', [AnnonceController::class, 'showWelcome'])->name('welcome');
 Route::get('/archive',[EntrepriseController::class,'archive'])->name('entreprises.archive');
 Route::get('/all',[EntrepriseController::class,'all'])->name('entreprises.all');
 Route::post('/jobdating/offers/{offer}/apply', [JobDatingApplicationController::class, 'apply'])->name('jobdating.apply');
 Route::group(['middleware' => ['auth']], function() {
-Route::resource('roles','RoleController');
-Route::resource('users','UserController');
+// Route::resource('roles','RoleController');
+// Route::resource('users','UserController');
 });

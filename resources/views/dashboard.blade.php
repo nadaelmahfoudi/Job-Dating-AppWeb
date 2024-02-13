@@ -1,5 +1,6 @@
 <x-app-layout>
     <x-slot name="header">
+    @if (Auth::user()->HasRole('Admin'))
     <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Dashboard') }}
             <div class="pull-right">
@@ -8,15 +9,21 @@
             <a class="btn  " href="{{ route('skills.index') }}"> Skills</a>
             <a class="btn  " href="{{ route('statistics.index') }}"> Statistics</a>
         </h2>
+    @endif
     </x-slot>
 
 
     <div class="py-12">
+        
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                 <!-- Start block -->
 <section class="bg-gray-50 dark:bg-gray-900 p-3 sm:p-5 antialiased">
+@if (Auth::user()->HasRole('Apprenant'))
+    <p>you are logged in !!</p>
+@endif
+@if (Auth::user()->HasRole('Admin'))
     <nav class="nav nav-tabs nav-stacked my-5">
         <a class="nav-link" href="{{ route('dashboard') }}">List entreprises</a>
         <a class="nav-link" href="{{ route('entreprises.archive') }}">Archive entreprises</a>
@@ -216,6 +223,7 @@
             </nav>
         </div>
     </div>
+@endif
 </section>
 <!-- End block -->
 <!-- Create modal -->

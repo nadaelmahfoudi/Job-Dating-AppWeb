@@ -41,17 +41,19 @@ class DatabaseSeeder extends Seeder
         // Annonce::factory(3)->create();
 
 
-        $adminRole = Role::create(['name'=>'admin']);
-        $apprenantRole = Role::create(['name'=>'apprenant']);
+        // $adminRole = Role::create(['name'=>'admin']);
+        // $apprenantRole = Role::create(['name'=>'apprenant']);
 
-        Permission::create(['name' => 'manage_users']);
-        Permission::create(['name'=>'Register']);
-        Permission::create(['name'=>'Aplly_to_job']);
-        Permission::create(['name' => 'view_job_suggestions']);
-        Permission::create(['name' => 'Edit_profile']);
+        // Permission::create(['name' => 'manage_users']);
+        // Permission::create(['name'=>'Register']);
+        // Permission::create(['name'=>'Aplly_to_job']);
+        // Permission::create(['name' => 'view_job_suggestions']);
+        // Permission::create(['name' => 'Edit_profile']);
 
+$this->call(RoleSeeder::class);
+$this->call(AdminSeeder::class);
 
-        $adminRole->givePermissionTo('manage_users');
-        $apprenantRole->givePermissionTo('Register','Aplly_to_job','view_job_suggestions','Edit_profile');
+        // $adminRole->givePermissionTo('manage_users');
+        // $apprenantRole->givePermissionTo('Register','Aplly_to_job','view_job_suggestions','Edit_profile');
     }
 }

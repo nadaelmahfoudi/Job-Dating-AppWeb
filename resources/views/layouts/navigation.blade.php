@@ -15,6 +15,12 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @if (Auth::user()->HasRole('Apprenant'))
+                    <x-nav-link :href="route('profile.job_dating_suggestions')" :active="request()->routeIs('profile.job_dating_suggestions')">
+                        {{ __('Home') }}
+                    </x-nav-link>
+                    @endif
+
                 </div>
             </div>
 
@@ -32,11 +38,13 @@
                             </div>
                         </button>
                     </x-slot>
-
+                    
                     <x-slot name="content">
+                    @if (Auth::user()->HasRole('Apprenant'))
                         <x-dropdown-link :href="route('profile.edit')">
                             {{ __('Profile') }}
                         </x-dropdown-link>
+                    @endif
 
                         <!-- Authentication -->
                         <form method="POST" action="{{ route('logout') }}">
