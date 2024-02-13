@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProfileUpdateRequest;
+use App\Models\Annonce;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -76,4 +77,23 @@ class ProfileController extends Controller
 
         return Redirect::to('/');
     }
+
+    public function showJobDatingSuggestions()
+    {
+        if (Auth::check()) {
+            
+            $user = Auth::user();
+    
+            $userSkills = $user->skills()->pluck('id')->toArray();
+    
+            $suggestedAnnonces = Annonce::whereHas('skills', function ($query) use ($userSkills) {
+                $query->whereIn('id', $userSkills);
+            })->get();
+    
+            return view('welcome', compact('suggestedAnnonces'));
+        } else {
+            $annonces = Annonce::latest()->paginate(5);
+            return view('welcome', compact('annonces'));
+        }
+}
 }

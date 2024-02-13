@@ -114,4 +114,6 @@ class AnnonceController extends Controller
         $annonces = Annonce::latest()->paginate(5); 
         return view('welcome', compact('annonces'));
     }
+
+    
 }
