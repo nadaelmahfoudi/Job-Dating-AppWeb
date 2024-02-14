@@ -86,14 +86,21 @@ class ProfileController extends Controller
     
             $userSkills = $user->skills()->pluck('id')->toArray();
     
+            // Récupérer les annonces avec un pourcentage de correspondance supérieur à 50%
             $suggestedAnnonces = Annonce::whereHas('skills', function ($query) use ($userSkills) {
                 $query->whereIn('id', $userSkills);
-            })->get();
+            })->get()->filter(function ($annonce) use ($userSkills) {
+                $annonceSkills = $annonce->skills()->pluck('id')->toArray();
+                $matchingSkillsCount = count(array_intersect($userSkills, $annonceSkills));
+                $matchingPercentage = ($matchingSkillsCount / count($annonceSkills)) * 100;
+                return $matchingPercentage > 50;
+            });
     
             return view('welcome', compact('suggestedAnnonces'));
         } else {
             $annonces = Annonce::latest()->paginate(5);
             return view('welcome', compact('annonces'));
         }
-}
+    }
+    
 }
