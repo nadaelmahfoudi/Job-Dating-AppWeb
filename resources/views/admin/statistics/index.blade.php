@@ -22,6 +22,7 @@
     <p style="font-size: 18px; color: #333;">Statistics:</p>
     <p style="font-size: 16px; color: #555;">Number of Users: {{ $usersCount }}</p>
     <p style="font-size: 16px; color: #555;">Number of Annonces: {{ $annoncesCount }}</p>
+    <p style="font-size: 16px; color: #555;">Number of Annonces Applayées: {{ $annoncesApplayéesCount }}</p>
     <p style="font-size: 16px; color: #555;">Number of Entreprises: {{ $entreprisesCount }}</p>
 </div>
 
